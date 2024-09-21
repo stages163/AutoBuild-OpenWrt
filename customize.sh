@@ -16,5 +16,5 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-se
 
 
 #4. select kernel
-sed -i 's/KERNEL_PATCHVER:=./KERNEL_PATCHVER:=5.15.162/g' openwrt/target/linux/x86/Makefile
-sed -i 's/KERNEL_TESTING_PATCHVER:=./KERNEL_TESTING_PATCHVER:=5.15.162/g' openwrt/target/linux/x86/Makefile
+sed -i 's/KERNEL_PATCHVER:=./KERNEL_PATCHVER:=5.15/g' openwrt/target/linux/x86/Makefile
+sed -i 's/KERNEL_TESTING_PATCHVER:=./KERNEL_TESTING_PATCHVER:=5.15/g' openwrt/target/linux/x86/Makefile
