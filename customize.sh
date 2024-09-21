@@ -13,3 +13,8 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-se
 
 #3. Replace with JerryKuKu’s Argon
 #rm openwrt/package/lean/luci-theme-argon -rf
+
+
+#4. select kernel
+sed -i 's/KERNEL_PATCHVER:=./KERNEL_PATCHVER:=5.15.162/g' ./target/linux/x86/Makefile
+sed -i 's/KERNEL_TESTING_PATCHVER:=./KERNEL_TESTING_PATCHVER:=5.15.162/g' ./target/linux/x86/Makefile
