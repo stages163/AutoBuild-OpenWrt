@@ -10,7 +10,7 @@ name: Build_my_x86
 # Add a button to trigger the workflow
 on: 
   # repository_dispatch:
-  workflow_dispatch:
+  # workflow_dispatch:
 
 jobs:
   build:
