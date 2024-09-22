@@ -5,60 +5,21 @@
 # Youtube Channel: https://goo.gl/fvkdwm 
 #=================================================
 
-name: my-x86
+name: Build_x86
 
 # Add a button to trigger the workflow
 on: 
- # repository_dispatch:
- # workflow_dispatch:
+  repository_dispatch:
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check disk usage
-        run: df -h
-
-    steps:
-      - name: Remove unused Docker images
-        run: docker system prune -af
-
-    steps:
-      - name: Clean up temporary files
-        run: sudo rm -rf /tmp/*
-
-    steps:
-      - name: Check disk usage
-        run: df -h
-
-    steps:
-      - name: Cache Maven packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-maven-
-            
-    steps:
     - name: Checkout
       uses: actions/checkout@master
-      
-    - name: 释放磁盘空间
-      uses: jlumbroso/free-disk-space@main
-      with:
-        # this might remove tools that are actually needed,
-        # if set to "true" but frees about 6 GB
-        tool-cache: true
-        # all of these default to true, but feel free to set to
-        # "false" if necessary for your workflow
-        android: true
-        dotnet: true
-        haskell: true
-        large-packages: true
-        swap-storage: true
-    
+
     - name: Initialization environment
       env:
         DEBIAN_FRONTEND: noninteractive
@@ -80,7 +41,7 @@ jobs:
 
     - name: Clone source code
       env: 
-        REPO_URL: https://github.com/coolsnowwolf/lede
+        REPO_URL: https://github.com/openwrt/openwrt
         REPO_BRANCH: master
       run: |
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
